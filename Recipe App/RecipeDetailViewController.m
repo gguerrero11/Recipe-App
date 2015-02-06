@@ -36,9 +36,11 @@
     descrip.numberOfLines = 0;
     descrip.text = recipeDescription;
     [self.detailScrollView addSubview:descrip];
+    
     // Creating a separate view window to be below description
     UIScrollView *ingredientsWithVolume = [[UIScrollView alloc]initWithFrame:CGRectMake(20,160,self.view.frame.size.width,self.view.frame.size.height)];
     [self.detailScrollView addSubview:ingredientsWithVolume];
+    
     
     //Creating label for the ingredientes of the recipe
     for (int i = 0; i < [RARecipes ingredientCountAtIndex:self.indexRecipes]; i++) {
@@ -51,9 +53,24 @@
         volumeKey.numberOfLines = 0;
         volumeKey.text = [RARecipes ingredientVolumeAtIndex:i inRecipeAtIndex:self.indexRecipes];
         [ingredientsWithVolume addSubview:volumeKey];
+    }
+
+    
+    //create view view for the recipe's directions
+    UIScrollView *recipeDirections = [[UIScrollView alloc]initWithFrame:CGRectMake(20, 400, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.detailScrollView addSubview:recipeDirections];
+
+    //create the label for the recipe descrition:
+    
+    for (int i = 0; i < [RARecipes directionsCountAtIndex:i]; i++){
+        NSString *directions = [RARecipes directionsAtIndex:self.indexRecipes];
+        UILabel *recipeDirectionsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, i*30, self.view.frame.size.width, self.view.frame.size.height)];
+        recipeDirectionsLabel.text = directions;
+        [recipeDirections addSubview:recipeDirectionsLabel];
 
     }
-  
+    
+    
     
 }
 

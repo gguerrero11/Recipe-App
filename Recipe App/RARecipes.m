@@ -37,6 +37,11 @@ static NSString * const DirectionsKey = @"directions";
     return [[self recipes][index][RecipeIngredientsKey] count];
 }
 
+
++ (NSInteger)directionsCountAtIndex:(NSInteger)index {
+    return [[self recipes][index][DirectionsKey] count];
+}
+
 + (NSString *)ingredientTypeAtIndex:(NSInteger)ingIndex inRecipeAtIndex:(NSInteger)recIndex {
     return [self recipes][recIndex][RecipeIngredientsKey][ingIndex][IngredientTypeKey];
 }
